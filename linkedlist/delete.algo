@@ -1,0 +1,33 @@
+ALGORITHM put_in_linked_list
+VAR
+    List:   STRUCT
+                data : CHAR;
+                next : ^List;
+            END_STRUCT
+    first : ^List := NULL;
+    p : ^List := NULL;
+    pred : ^List := NULL;
+    c   : CHAR;
+BEGIN
+    // we created a sorted linked list 
+
+    // Read the character to delete.
+    Read(c)
+    p := first;
+    WHILE (p^.next <> NULL) DO
+        IF (p^.data = c) THEN
+            IF (pred = NULL) THEN // c is the first character
+                first := first^.next;
+                free(p);
+            ELSE
+                pred^.next := p^.next;
+                free(p);
+            END_IF
+            BREAK;
+        END_IF
+        pred := p;
+        p := p^.next;
+    END_WHILE
+    
+
+END

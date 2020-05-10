@@ -1,0 +1,38 @@
+/*
+    a super populaire interview questions is to find the first non-repeated
+    character in a string.
+    // array : y is the first non-repeated-character
+    // a = 2
+    // r = 2
+    // y = 1 
+    //  go my code  : g is the first non-repeated-character
+    
+*/
+
+ALGORITHM first_non_repeated_char
+VAR
+    htab : HASH_TABLE<CHAR,INTEGER>;
+    str : STRING[50];
+    i,count : INTEGER;
+    ch : CHAR;
+BEGIN
+    Read(str);
+
+    FOR i FROM 0 TO str.length -1 STEP 1  DO
+        IF (htab.lookup(str[i]) = TRUE) THEN
+            count := htab.get(str[i]);
+            htab.insert(str[i],count+1);
+        ELSE
+            htab.insert(str[i],1);
+        END_IF
+    END_FOR
+
+    FOR i FROM 0 TO str.length -1 STEP 1  DO
+        IF (htab.get(str[i]) = 1) THEN
+            ch := str[i];
+            BREAK;
+        END_IF
+    END_FOR
+
+    Write(ch);
+END

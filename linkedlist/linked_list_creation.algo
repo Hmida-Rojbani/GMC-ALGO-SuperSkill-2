@@ -1,0 +1,28 @@
+ALGORITHM create_linked_list
+VAR
+    List:   STRUCT
+                data : CHAR;
+                next : ^List;
+            END_STRUCT
+    first : ^List := NULL;
+    p : ^List := NULL;
+    c   : CHAR;
+    i :INTEGER :=0;
+BEGIN
+    WHILE (i<3) DO
+        // read a character to add to list
+        Read(c);
+        // allocate memory and create a node // free(p)
+        p := create(List);
+        // insert data in the node
+        p^.data := c;
+        // link first to p inserting in the head of the list
+        p^.next := first;
+        first := p;
+        i := i+1;
+    END_WHILE
+    
+    
+
+
+END

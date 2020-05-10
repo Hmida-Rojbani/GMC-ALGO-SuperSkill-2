@@ -1,0 +1,24 @@
+/*
+Inversing a stack 
+One possible application of a queue is to reverse the order of the elements
+of a stack. Indeed, it is enough to pop all the elements of the stack, 
+then to re-push them in the order where they came out. 
+We will therefore use a queue as intermediate storage.
+*/
+
+ALGORITHM inverse_stack
+VAR
+    stk : STACK;
+    qu  : QUEUE;
+BEGIN
+    // fill the stack
+
+    WHILE (NOT stk.isEmpty()) DO
+        qu.enqueue(stk.pop());
+    END_WHILE
+
+    WHILE (NOT qu.isEmpty()) DO
+        stk.push(qu.dequeue());
+    END_WHILE
+
+END

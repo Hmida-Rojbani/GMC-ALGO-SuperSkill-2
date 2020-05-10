@@ -1,0 +1,16 @@
+ALGORITHM traverse_array
+VAR
+    tab : ARRAY_OF INTEGER[5];
+    i : INTEGER;
+BEGIN
+    tab := {1,3,5,7,8}; // insert directly in array
+    Write("Print Array :");
+    FOR i FROM 0 TO 4 STEP 1  DO
+        Write(tab[i]);
+    END_FOR
+
+    // another version
+    FOR i FROM 0 TO tab.length-1 DO
+        Write(tab[i]);
+    END_FOR
+END

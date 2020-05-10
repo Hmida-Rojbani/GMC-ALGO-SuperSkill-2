@@ -1,0 +1,30 @@
+ALGORITHM put_in_linked_list
+VAR
+    List:   STRUCT
+                data : CHAR;
+                next : ^List;
+            END_STRUCT
+    first : ^List := NULL;
+    p : ^List := NULL;
+    succ, pred : ^List := NULL;
+
+    c   : CHAR;
+BEGIN
+    // we created a sorted linked list 
+
+    // Read new character and we will put it in right order.
+    Read(c)
+    p := first;
+    WHILE (p^.data < c AND p^.next <> NULL) DO
+        pred := p;
+        p := p^.next;
+    END_WHILE
+    succ := p;
+    
+    p := create(List);
+    // insert data in the node
+    p^.data := c;
+    pred^.next := p;
+    p^.next := succ;
+
+END

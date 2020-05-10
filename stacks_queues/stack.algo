@@ -1,0 +1,81 @@
+/*
+Write an algorithm that use a stack to test for balanced parentheses, when scanning 
+the following expressions. Your solution should show the state of the stack 
+each time it is modified. The “state of the stack” must indicate which is the top element.
+Only consider the parentheses [,],(,),{,} . Ignore the variables and operators.
+(a) [ a + { b / ( c - d ) + e / (f + g ) } - h ]#
+(b) [ a { b + [ c ( d + e ) - f ] + g }#
+*/
+/*
+[
+[{
+[{( TOP OF STACK IS ON THE RIGHT
+[{
+[{(
+[{
+[
+    empty stack, so brackets match
+*/
+/*
+[
+[{
+[{[ TOP OF STACK IS ON THE RIGHT
+[{[(
+[{[
+[{
+[ stack not empty, so brackets don’t match
+*/
+
+
+ALGORITHM valid_parentheses
+VAR
+    state_stack : CHAR; 
+    c : CHAR := ' ';
+    stk : STACK;
+    wrong : BOOLEAN := FALSE;
+BEGIN
+    WHILE (c <> '#' AND NOT wrong) DO
+        Read(c);
+        SWITCH (c) DO
+            case '[': 
+            case '{': 
+            case '(': stk.push(c);
+                            state_stack := stk.peek(); // peek do not affect the stack.
+                            Write(state_stack);
+                            BREAK;
+            case ']': IF (stp.peek()='[') THEN
+                                state_stack := stk.pop(); // peek do not affect the stack.
+                                Write(state_stack);
+                            ELSE
+                                wrong := TRUE;
+                            END_IF  
+                            BREAK;
+            case ')': IF (stp.peek()='(') THEN
+                                state_stack := stk.pop(); // peek do not affect the stack.
+                                Write(state_stack);
+                            ELSE
+                                wrong := TRUE;    
+                            END_IF  
+                            BREAK;
+            case '}': IF (stp.peek()='{') THEN
+                                state_stack := stk.pop(); // peek do not affect the stack.
+                                Write(state_stack);
+                            ELSE
+                                wrong := TRUE;
+                            END_IF  
+                            BREAK;
+                            
+        END_SWITCH
+
+        
+    END_WHILE
+
+    IF (stk.isEmpty() AND NOT wrong) THEN
+        Write("Empty stack, so brackets match.");
+    ELSE
+        Write("Stack not empty, so brackets don’t match.");
+    END_IF
+END
+
+
+

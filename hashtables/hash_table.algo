@@ -1,0 +1,38 @@
+ALGORITHM hash
+VAR
+    // declareing hash table
+    htab : HASH_TABLE<INTEGER,STRING>;
+    
+BEGIN
+    htab : HASH_TABLE<INTEGER,STRING>;
+    htab.insert(1,"one");
+    htab.insert(2,"two");
+    htab.insert(3,"three");
+    Write(htab);
+
+    htab.lookup(0); // TRUE
+    htab.lookup(5); // FALSE
+
+
+    htab.get(0); // "zero"
+
+    htab.delete(0);
+
+    // duplicate key
+    htab.insert(3,"three-a");
+    htab.insert(3,"three-b");
+
+    htab.get(3) // "three-b"
+
+    // duplicate value
+    htab.insert(3,"three-a");
+    htab.insert(4,"three-a");
+
+    // hash function
+    HASH_TABLE<STRING,CHAR>
+
+    FUNCTION hash_function(STRING str) : INTEGER
+    BEGIN
+        RETURN str.length;
+    END
+END
